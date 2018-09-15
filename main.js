@@ -2,8 +2,7 @@ const cities = require('cities');
 const url = require('url');
 const http = require('http');
 
-
-http.createServer(function (request, response) {
+const app = http.createServer(function (request, response) {
     var city = '';
     var query = url.parse(request.url, true).query;
     if (query.zipCode)
@@ -18,12 +17,15 @@ http.createServer(function (request, response) {
     var html = '<h1>' + city + '</h1>';
     response.writeHead(200, {'Content-Type': 'text/html'});
     response.end('<html><body><h1>The city is ' + city + '</h1></body></html>');
-}).listen(3000);
+})
 
-// Console will print the message
-console.log('Server running at http://127.0.0.1:3000');
+var server = app.listen(3000, function(){
+  console.log('Server is running on port 3000');
+});
 
-
+exports.closeServer = function(){
+  server.close();
+};
 
 
 

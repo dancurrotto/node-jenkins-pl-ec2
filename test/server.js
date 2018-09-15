@@ -1,5 +1,6 @@
 var expect  = require('chai').expect;
 var request = require('request');
+var server = require("../main.js");
 
 var url = '';
 
@@ -29,6 +30,7 @@ it('Testing Upper East Side Zip Code',
 
     request(url , function(error, response, body) {
         expect(body).to.equal('<html><body><h1>The city is New York</h1></body></html>');
+        server.closeServer();
         done();
     });
 });
