@@ -11,9 +11,9 @@ aws configure set region us-east-2
 aws configure set output json
 
 
-aws deploy push --application-name node-jenkins-ec2 --description "This is a revision for the application" --s3-location s3://vs-code-deploy-dev/nje.zip --source /var/lib/jenkins/workspace/node-jenkins-ec2 --region us-east-2
+aws deploy push --application-name node-jenkins-ec2 --description "This is a revision for the application" --s3-location s3://vs-code-deploy-dev/njpe.zip --source /var/lib/jenkins/workspace/node-jenkins-pl-ec2 --region us-east-2
 
-e_tag=$(aws s3api head-object --bucket vs-code-deploy-dev --key nje.zip --query ETag)
+e_tag=$(aws s3api head-object --bucket vs-code-deploy-dev --key njpe.zip --query ETag)
 
 #echo $(python getCleanedAws.py $e_tag )
 
@@ -21,5 +21,5 @@ e_tag=$(aws s3api head-object --bucket vs-code-deploy-dev --key nje.zip --query 
 returnValue=$(python getCleanedAws.py $e_tag )
 echo $returnValue
 
-aws deploy create-deployment --application-name node-jenkins-ec2 --s3-location bucket=vs-code-deploy-dev,key=nje.zip,bundleType=zip,eTag=$returnValue --deployment-group-name node-jenkins-ec2-dg --deployment-config-name CodeDeployDefault.OneAtATime --description test --region us-east-2
+aws deploy create-deployment --application-name node-jenkins-ec2 --s3-location bucket=vs-code-deploy-dev,key=njpe.zip,bundleType=zip,eTag=$returnValue --deployment-group-name node-jenkins-ec2-dg --deployment-config-name CodeDeployDefault.OneAtATime --description test --region us-east-2
 
