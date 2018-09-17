@@ -2,9 +2,8 @@ import sys
 import json
 def applicationExists():
     exists = False
-    inputValue = 'Dan'
-    #inputValue = sys.argv[1]
-    jsonData = sys.argv[1]
+    inputValue = sys.argv[1]
+    jsonData = sys.argv[2]
     print 'jsonData:' + jsonData
   
     
