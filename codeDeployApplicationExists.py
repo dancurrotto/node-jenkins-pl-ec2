@@ -2,9 +2,10 @@ import sys
 import json
 def applicationExists():
     exists = False
-    inputValue =  sys.argv[1]
-    jsonData =  sys.argv[2]
-    
+    inputValue = 'Dan'
+    #inputValue = sys.argv[1]
+    jsonData = sys.argv[1]
+    print 'jsonData:' + jsonData
   
     
     j = json.loads(jsonData)
@@ -12,7 +13,7 @@ def applicationExists():
     for application in j['applications']:
         if inputValue == application:
             exists = True
-        #print j['applications'][0]
+
     
 
     return str(exists)
