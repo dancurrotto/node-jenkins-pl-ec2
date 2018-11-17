@@ -17,7 +17,7 @@ pipeline {
                 
                 sh 'echo $WORKSPACE'
                 sh 'echo $AWS_ACCESS_KEY_ID'
-                //sh '~/.local/bin/aws --version'
+                sh '/usr/bin/aws --version'
                 sh 'echo $PATH'
                 sh 'aws --version'
                 sh '~/.local/bin/aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID'
